@@ -1,0 +1,32 @@
+sudo yum install cups cups-libs avahi-libs avahi net-snmp-libs google-cloud-print-connec
+p-connector-util init
+
+"Local printing" means that clients print directly to the connector via
+local subnet, and that an Internet connection is neither necessary nor used.
+Enable local printing?
+y
+
+"Cloud printing" means that clients can print from anywhere on the Internet,
+and that printers must be explicitly shared with users.
+Enable cloud printing?
+y
+
+Visit https://www.google.com/device,and enter this code.I'll wait for you.
+xxxx-xxxx
+Acquired OAuth credentials for robot account
+
+Enter the email printers will automatically be shared or group with whom all printers will automatically be
+xxxxxxx@gmail.com
+
+The config file /root/go/bin/gcp-cups-connector.config json is ready to rock.
+keep it somewhere safe,as it contains an OAuth refresh token.
+
+wget https://raw.githubusercontent.com/google/cloud-print-connecto/master/systemd/cloud
+
+sudo install -o root -m 0664 cloud-print-connector.service /etc/systemd/system
+
+sudo systemc+l enable cloud-print-connector.service
+
+sudo systemc+l start cloud-print-connector.service
+
+sudo systemc+l status cloud-print-connector.service
